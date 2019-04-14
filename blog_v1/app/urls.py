@@ -1,7 +1,10 @@
 from django.urls import path
-from app.views import index, article
+from django.conf.urls import include
+from app.views import index, article, note
 
 urlpatterns = [
     path('', index),
-    path('article/', article)
+    path('note/', note),
+    path('article/', article),
+    path('search/', include('haystack.urls'))
 ]
