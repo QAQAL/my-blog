@@ -11,13 +11,3 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
-
-
-class Note(models.Model):
-    # user = models.ForeignKey(User)
-    pub_date = models.DateTimeField(auto_now=True)
-    title = models.CharField(max_length=200)
-    body = models.TextField()
-
-    def __unicode__(self):
-        return self.title

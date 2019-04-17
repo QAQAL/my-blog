@@ -2,11 +2,21 @@ import logging
 
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, HttpResponseNotFound
+from django.db.models import Q
+from haystack.forms import SearchForm
 
-from .models import Article, Note
+from .models import Article
 
 
 logger = logging.getLogger('django')
+
+
+
+def search(request):
+    #获得查询关键字
+    sform = SearchForm(request.GET)
+    posts = sform.search()
+    return posts
 
 
 def index(request):
@@ -34,26 +44,6 @@ def article(request):
         return HttpResponseNotFound('notFoundError')
 
     return JsonResponse({'data': data})
-
-
-def note(request):
-    if request.method == 'POST':
-        body = eval(request.body)
-        title = body.get('title')
-        body = body.get('body')
-        data = {
-            'title': title,
-            'body': body
-        }
-        Note.objects.create(**data).save()
-
-    elif request.method == 'GET':
-        data = list(Note.objects.all().values())
-
-    else:
-        return HttpResponseNotFound('notFoundError')
-
-    return JsonResponse({'data': data}, json_dumps_params={'ensure_ascii': False})
 
 
 def subject(request):
