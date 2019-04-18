@@ -89,7 +89,7 @@ DATABASES = {
 
 HAYSTACK_CONNECTIONS = {
     'default': {
-        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'ENGINE': 'app.whoosh_cn_backend.WhooshEngine',
         'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
     },
 }
