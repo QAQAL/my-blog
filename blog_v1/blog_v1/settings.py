@@ -137,60 +137,60 @@ STATIC_URL = '/static/'
 
 
 # Logging
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format': '[%(asctime)s] [%(levelname)s] %(message)s'
-        },
-    },
-    'handlers': {
-        # 输出日志的控制台
-        'console': {
-            'level': 'INFO',
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose'
-        },
-        # 输出日志到文件，按日期滚动
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.handlers.TimedRotatingFileHandler',
-            # TimedRotatingFileHandler的参数
-            # 参照https://docs.python.org/3/library/logging.handlers.html#timedrotatingfilehandler
-            # 目前设定每天一个日志文件
-            'filename': 'logs/manage.log',
-            'when': 'M',
-            'interval': 1,
-            'backupCount': 100,
-            'formatter': 'verbose'
-        },
-        'handler_file': {
-            'level': 'DEBUG',
-            # 指定日志文件大小，若超过指定的文件大小，会再生成一个新的日志文件保存日志信息
-            'class': 'logging.handlers.RotatingFileHandler',
-            # 指定文件大小
-            # 1M=1024kb 1kb=1024b
-            'maxBytes': 1 * 1024 * 1024,
-            # 文件地址
-            'filename': 'logs/log.txt',
-            # 指定保存格式
-            'formatter': 'verbose'
-        },
-        # 发送邮件，目前腾讯云、阿里云的服务器对外发送邮件都有限制，暂时不使用
-        'email': {
-            'level': 'ERROR',
-            'class': 'django.utils.log.AdminEmailHandler',
-            'include_html': True,
-        }
-    },
-    'loggers': {
-        # 不同的logger
-        'django': {
-            'handlers': ['console', 'handler_file'],
-            'level': 'INFO',
-            'propagate': True,
-        },
-
-    },
-}
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'formatters': {
+#         'verbose': {
+#             'format': '[%(asctime)s] [%(levelname)s] %(message)s'
+#         },
+#     },
+#     'handlers': {
+#         # 输出日志的控制台
+#         'console': {
+#             'level': 'INFO',
+#             'class': 'logging.StreamHandler',
+#             'formatter': 'verbose'
+#         },
+#         # 输出日志到文件，按日期滚动
+#         'file': {
+#             'level': 'DEBUG',
+#             'class': 'logging.handlers.TimedRotatingFileHandler',
+#             # TimedRotatingFileHandler的参数
+#             # 参照https://docs.python.org/3/library/logging.handlers.html#timedrotatingfilehandler
+#             # 目前设定每天一个日志文件
+#             'filename': 'logs/manage.log',
+#             'when': 'M',
+#             'interval': 1,
+#             'backupCount': 100,
+#             'formatter': 'verbose'
+#         },
+#         'handler_file': {
+#             'level': 'DEBUG',
+#             # 指定日志文件大小，若超过指定的文件大小，会再生成一个新的日志文件保存日志信息
+#             'class': 'logging.handlers.RotatingFileHandler',
+#             # 指定文件大小
+#             # 1M=1024kb 1kb=1024b
+#             'maxBytes': 1 * 1024 * 1024,
+#             # 文件地址
+#             'filename': 'logs/log.txt',
+#             # 指定保存格式
+#             'formatter': 'verbose'
+#         },
+#         # 发送邮件，目前腾讯云、阿里云的服务器对外发送邮件都有限制，暂时不使用
+#         'email': {
+#             'level': 'ERROR',
+#             'class': 'django.utils.log.AdminEmailHandler',
+#             'include_html': True,
+#         }
+#     },
+#     'loggers': {
+#         # 不同的logger
+#         'django': {
+#             'handlers': ['console', 'handler_file'],
+#             'level': 'INFO',
+#             'propagate': True,
+#         },
+#
+#     },
+# }

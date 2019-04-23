@@ -625,7 +625,7 @@ class WhooshSearchBackend(BaseSearchBackend):
                 del(additional_fields[DJANGO_ID])
 
                 if highlight:
-                    sa = ChineseAnalyzer()
+                    sa = StemmingAnalyzer()
                     formatter = WhooshHtmlFormatter('em')
                     terms = [token.text for token in sa(query_string)]
 
