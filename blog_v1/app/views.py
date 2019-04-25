@@ -8,11 +8,11 @@ from django.http import HttpResponse, JsonResponse, HttpResponseNotFound
 from .models import Article
 
 
-logger = logging.getLogger('django')
+logger = logging.getLogger('debug')
 
 
 def index(request):
-    return render(request, 'base.html')
+    return HttpResponse('hello world')
 
 
 def article(request):
@@ -30,7 +30,7 @@ def article(request):
 
     elif request.method == 'GET':
         data = list(Article.objects.all().values())
-
+        logger.info(data)
     else:
         return HttpResponseNotFound('notFoundError')
 
